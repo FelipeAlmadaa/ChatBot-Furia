@@ -1,60 +1,127 @@
-#chat-messages {
+/* ==========================================================================
+   FURIA Zone - Custom Styles
+   ========================================================================== */
+
+/* Custom Scrollbar for Chat Windows */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Chat Layout Fixes */
+#chat-messages,
+#torcida-messages {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  overflow-y: auto;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
+#torcida-messages {
+  background-color: transparent !important;
+}
+
+/* ==========================================================================
+   Message Bubbles Styling
+   ========================================================================== */
+
+/* Bot Message Bubble */
 .bot-message {
-  background-color: #7c3aed;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.9) 0%, rgba(126, 34, 206, 0.9) 100%);
   color: white;
-  padding: 10px 15px;
-  border-radius: 20px 20px 20px 0;
-  max-width: 70%;
+  padding: 12px 18px;
+  border-radius: 20px 20px 20px 4px;
+  max-width: 80%;
   align-self: flex-start;
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  animation: slideUp 0.3s ease-out forwards;
 }
 
+/* User Message Bubble */
 .user-message {
-  background-color: #374151;
+  background: linear-gradient(135deg, rgba(39, 39, 42, 0.9) 0%, rgba(24, 24, 27, 0.9) 100%);
   color: white;
-  padding: 10px 15px;
-  border-radius: 20px 20px 0 20px;
-  max-width: 70%;
+  padding: 12px 18px;
+  border-radius: 20px 20px 4px 20px;
+  max-width: 80%;
   align-self: flex-end;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  animation: slideUp 0.3s ease-out forwards;
 }
+
+/* Torcida Message Bubble */
+.torcida-message {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.1) 100%);
+  color: #e2e8f0;
+  padding: 12px 18px;
+  border-radius: 20px 20px 20px 4px;
+  max-width: 85%;
+  align-self: flex-start;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-left: 3px solid rgba(59, 130, 246, 0.8);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+/* Username inside torcida message (if added by JS) */
+.torcida-message strong {
+  display: block;
+  color: #60a5fa;
+  margin-bottom: 4px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
 
 .fade-in {
-  animation: fadeIn 0.6s ease-in-out forwards;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
 }
 
-#torcida-messages {
-  background-color: #2d3748;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  overflow-y: auto;
-  gap: 0.5rem;
-}
-
-.torcida-message {
-  background-color: #6b46c1;
-  color: #ffffff;
-  padding: 10px 15px;
-  border-radius: 20px 20px 0 20px;
-  max-width: 70%;
-  align-self: flex-start;
-  font-weight: bold;
-  animation: fadeIn 0.6s ease-in-out forwards;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
